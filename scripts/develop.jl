@@ -1,19 +1,3 @@
-#=
-
-Start julia in the project/environment folder you're developing, or activate it:   julia --project=.   typically, if your terminal is already there.
-
-Then, first thing, run this script. It makes a new test environment in your temp folder and activates it. 
-It will be based upon the current Manifest and Project, but will add Revise and the [test] dependencies as well.
-Also, it will call "using Revise" and move the current dir to the "test" folder in your project.
-
-Now, you can directly call "> include("runtests.jl")" rather than "] test PackageName" - the latter will need to recompile the lot from scratch,
-but the former will, thanks to Revise, only recompile the bits that changed! Your tests will run WAY faster (the second+ time you run em) and
-still will truly test you latests changes!
-
-Now you can develop FAST! And temporarily and quickly uncomment/comment bits and pieces in the "runtests.jl" while you're still in the hacking stage!
-
-=#
-
 import Pkg
 
 function __prep_dev_dir()
