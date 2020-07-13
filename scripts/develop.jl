@@ -37,7 +37,11 @@ function __prep_dev_dir()
     # Now copy all dependencies, also the [test] ones!
     take = false
     for line in lines
-        if line == "[deps]"
+        if startswith(lstrip(line), "[")
+            take = false
+        end
+
+        if (line == "[deps]") || (line == "[extras]")
             take = true
             continue
         end

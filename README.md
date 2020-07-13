@@ -21,3 +21,4 @@ Now you can develop FAST! And temporarily and quickly uncomment/comment bits and
 ## To do ##
 - Make `update.jl` not forcefully replace `startup.jl` but add (and replace) only a part of the `startup.jl`. E.g. by adding/replacing a recognizable code block.
 - This tool does not yet recognize a Project.toml and/or Manifest.toml in the `/test` subfolder of a project. It should.
+- Any `[compat]` blocks should also be copied and would currently cause an issue.
