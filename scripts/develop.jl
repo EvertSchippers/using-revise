@@ -34,6 +34,8 @@ function __prep_dev_dir()
     new_toml = ["[deps]",
      "Revise = \"295af30f-e4ad-537b-8983-00126c2a3abe\""]
     
+    added = ["Revise"]
+
     # Now copy all dependencies, also the [test] ones!
     take = false
     for line in lines
@@ -45,8 +47,14 @@ function __prep_dev_dir()
             take = true
             continue
         end
+        
         if take && occursin( "=", line) && strip.(split(line, "="))[2][1] == '"'
-            push!(new_toml, line)
+            name = strip(split(line, "=")[1])
+
+            if !(name in added)
+                push!(new_toml, line)
+                push!(added, name)
+            end
         end
     end
 
