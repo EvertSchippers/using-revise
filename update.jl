@@ -4,7 +4,9 @@ function copy_to_depot(rel_path)
     cp(joinpath(here, rel_path), joinpath(depot, rel_path), force=true)
 end
 
-copy_to_depot(joinpath("scripts", "develop.jl"))
+scripts = joinpath.(Ref("scripts"), readdir("scripts"))
+copy_to_depot.(scripts)
+
 copy_to_depot(joinpath("config", "startup.jl"))
 
 @info "Rewritten your startup!"

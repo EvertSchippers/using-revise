@@ -50,3 +50,4 @@ end
 
 activate_dev() = include_script("develop")
 runtests() = include("runtests.jl")
+include_script("register")
