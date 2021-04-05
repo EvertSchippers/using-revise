@@ -1,5 +1,12 @@
 import Pkg
 
+function __project_name(project_toml)
+    lines = map(l -> split(l, "="), readlines(project_toml))
+    names = filter(s -> length(s)==2 && startswith(s[1], "name"),  lines)
+    
+    if (length(names)==1)
+        return split() first[names][2]
+
 function __prep_dev_dir()
     
     # Let's see what project we're in:
